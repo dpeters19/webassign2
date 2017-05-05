@@ -72,7 +72,11 @@ def is_acceptable_answer(correct_answer, response):
     >>> is_acceptable_answer(100, '1.02e2')
     False
     """
-    correct_answer = convert_to_scientific_notation(correct_answer)
+
+    try:
+        correct_answer = convert_to_scientific_notation(correct_answer)
+    except TypeError as te:
+        print(te.args)
     number, exponent = correct_answer.split("e")
     number = float(number)
     max_number = number + .01
