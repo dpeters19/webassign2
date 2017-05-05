@@ -1,4 +1,5 @@
 import science_utils
+import prompter
 
 correct_answer = 100    # TODO change this
 correct = False
@@ -7,7 +8,7 @@ MAX_SUBMISSIONS = 3
 
 
 while not correct:
-    response = input("Your answer is: ")
+    response = prompter.prompt_for_answer("Your answer is: ")
     number_of_submissions += 1
     if science_utils.is_hyper_scientific(response) and science_utils.is_acceptable_answer(correct_answer, response):
         # If response is close enough but not perfect
