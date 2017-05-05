@@ -1,3 +1,5 @@
+import re
+
 def is_hyper_scientific(number):
     """ Determines if an answer is hyper-scientific
     Args:
@@ -35,10 +37,12 @@ def convert_to_scientific_notation(number):
     >>> convert_to_scientific_notation(0.01)
     '1.00e-2'
     """
-    try:
-        float(number)
-    except TypeError as te:
-        raise TypeError("That was not a number")
+
+    pattern = r"\d\.\d{2}e\d"
+
+    if re.search(pattern, number) is None:
+        raise ValueError("That was not a number")
+
     number = "%.2e" % number
     if "+" in number:
         positive = True
@@ -72,7 +76,13 @@ def is_acceptable_answer(correct_answer, response):
     >>> is_acceptable_answer(100, '1.02e2')
     False
     """
-    correct_answer = convert_to_scientific_notation(correct_answer)
+
+    # TODO Handle errors better with loop
+    try:
+        correct_answer = convert_to_scientific_notation(correct_answer)
+    except ValueError as ve:
+        print(ve.args)
+
     number, exponent = correct_answer.split("e")
     number = float(number)
     max_number = number + .01
