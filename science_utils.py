@@ -1,5 +1,6 @@
 import re
 
+
 def is_hyper_scientific(number):
     """ Determines if an answer is hyper-scientific
     Args:
@@ -38,9 +39,9 @@ def convert_to_scientific_notation(number):
     '1.00e-2'
     """
 
-    pattern = r"\d\.\d{2}e\d"
+    pattern = r"\d\.\d{2}e\d{1,}"
 
-    if re.search(pattern, number) is None:
+    if re.search(pattern, str(number)) is None:
         raise ValueError("That was not a number")
 
     number = "%.2e" % number
