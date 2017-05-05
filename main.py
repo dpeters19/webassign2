@@ -9,6 +9,7 @@ while not correct and number_of_submissions < MAX_SUBMISSIONS:
     response = input("Your answer is: ")
     number_of_submissions += 1
     if science_utils.is_hyper_scientific(response) and science_utils.is_acceptable_answer(acceptable_answers, response):
+        # TODO combine is_acceptable_answer and generate_acceptable_answer
         correct = True
         print("Your answer was correct (or close enough)")
 
