@@ -5,15 +5,18 @@ def is_hyper_scientific(number):
     """ Determines if an answer is hyper-scientific
     Args:
         number (String)
+        
     Returns:
         bool: True if is hyper-scientific, False otherwise
+        
     Example:
-    >>> is_hyper_scientific("1.00e2")
-    True
-    >>> is_hyper_scientific("100")
-    False
-    >>> is_hyper_scientific("1.234e5")
-    False
+        >>> is_hyper_scientific("1.00e2")
+        True
+        >>> is_hyper_scientific("100")
+        False
+        >>> is_hyper_scientific("1.234e5")
+        False
+        
     """
     if convert_to_scientific_notation(float(number)) == number:
         return True
@@ -29,14 +32,15 @@ def convert_to_scientific_notation(number):
          String
 
     Example:
-    >>> convert_to_scientific_notation(5)
-    '5.00e0'
-    >>> convert_to_scientific_notation(10)
-    '1.00e1'
-    >>> convert_to_scientific_notation(-100)
-    '-1.00e2'
-    >>> convert_to_scientific_notation(0.01)
-    '1.00e-2'
+        >>> convert_to_scientific_notation(5)
+        '5.00e0'
+        >>> convert_to_scientific_notation(10)
+        '1.00e1'
+        >>> convert_to_scientific_notation(-100)
+        '-1.00e2'
+        >>> convert_to_scientific_notation(0.01)
+        '1.00e-2'
+        
     """
 
     pattern = r"\d\.\d{2}e\d{1,}"
@@ -70,12 +74,13 @@ def is_acceptable_answer(correct_answer, response):
         bool: True of the answer is an acceptable answer, false otherwise
 
     Examples:
-    >>> is_acceptable_answer(100, '1.00e2')
-    True
-    >>> is_acceptable_answer(100, '1.01e2')
-    True
-    >>> is_acceptable_answer(100, '1.02e2')
-    False
+        >>> is_acceptable_answer(100, '1.00e2')
+        True
+        >>> is_acceptable_answer(100, '1.01e2')
+        True
+        >>> is_acceptable_answer(100, '1.02e2')
+        False
+        
     """
 
     # TODO Handle errors better with loop
