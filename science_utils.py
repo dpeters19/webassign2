@@ -35,7 +35,9 @@ def convert_to_scientific_notation(number):
     >>> convert_to_scientific_notation(0.01)
     '1.00e-2'
     """
-
+    if type(number) != float:
+        raise TypeError
+    
     number = "%.2e" % number
     if "+" in number:
         positive = True
