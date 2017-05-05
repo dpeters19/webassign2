@@ -1,3 +1,6 @@
+import science_utils
+
+
 def prompt_for_answer(question=""):
     """ Prompts the user for an answer
     Args:
@@ -8,7 +11,13 @@ def prompt_for_answer(question=""):
     """
 
     # TODO Change to verify answer here
-    response = ""
-    while response == "":
+    is_acceptable = False
+    while not is_acceptable:
         response = input(question)
+        try:
+            science_utils.convert_to_scientific_notation(response)
+            is_acceptable = True
+        except ValueError as ve:
+            print("{}. Please try again. \n".format(ve.args[0]))
+
     return response
