@@ -18,8 +18,10 @@ def is_hyper_scientific(number):
         False
         
     """
-    if convert_to_scientific_notation(float(number)) == number:
-        return True
+    pattern = r"\d\.\d{2}e\d{1,}"
+    if re.search(pattern, number) is not None:
+        if number[0] != "0":    # First number should never be zero
+            return True
     return False
 
 
@@ -42,11 +44,6 @@ def convert_to_scientific_notation(number):
         '1.00e-2'
         
     """
-
-    pattern = r"\d\.\d{2}e\d{1,}"
-
-    if re.search(pattern, str(number)) is None:
-        raise ValueError("That was not a number")
 
     number = "%.2e" % number
     if "+" in number:
