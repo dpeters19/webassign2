@@ -20,7 +20,8 @@ def is_hyper_scientific(number):
     """
     pattern = r"\d\.\d{2}e\d{1,}"
     if re.search(pattern, number) is not None:
-        return True
+        if number[0] != "0":    # First number should never be zero
+            return True
     return False
 
 
