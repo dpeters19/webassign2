@@ -91,11 +91,10 @@ def is_acceptable_answer(correct_answer, response):
     max_number = str(max_number) + "e" + exponent
     min_number = str(min_number) + "e" + exponent
 
-    min_number = float(min_number)
-    correct_answer = float(correct_answer)
-    max_number = float(max_number)
+    min_number = int(float(min_number))
+    max_number = int(float(max_number))
 
-    if min_number <= float(response) <= max_number:
+    if min_number <= int(float(response)) <= max_number:
         return True
 
     return False
