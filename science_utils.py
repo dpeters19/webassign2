@@ -37,8 +37,9 @@ def convert_to_scientific_notation(number):
     """
     try:
         float(number)
-    except TypeError as te:
-        raise TypeError("That was not a number")
+    except ValueError:
+        raise ValueError("That was not a number")
+
     number = "%.2e" % number
     if "+" in number:
         positive = True
@@ -73,10 +74,12 @@ def is_acceptable_answer(correct_answer, response):
     False
     """
 
+    # TODO Handle errors better with loop
     try:
         correct_answer = convert_to_scientific_notation(correct_answer)
-    except TypeError as te:
-        print(te.args)
+    except ValueError as ve:
+        print(ve.args)
+
     number, exponent = correct_answer.split("e")
     number = float(number)
     max_number = number + .01
