@@ -11,9 +11,6 @@ question, correct_answer = question.get_question()
 for line in question:
     print(line)
 
-# TODO remove this when ready
-print(correct_answer)
-
 while not correct and number_of_submissions < MAX_SUBMISSIONS:
     response = prompter.prompt_for_answer("Your answer is: ")
     number_of_submissions += 1
