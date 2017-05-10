@@ -21,9 +21,10 @@ Much of the syntax here was inspired by the `shell` language.
 
 - Underscores are replaced with spaces
 
-#### Notes
+#### Separation
 
 - Separate the defined variables from the question with `QUESTION`
+  - The answer should come after the keyword `SECRET`
 
 
 
@@ -34,6 +35,8 @@ tablespoons_per_serving=rand(1,4)*10
 substance="cream_cheese"
 density=rand(15,20)/10
 servings=rand(2,8)*1000
+SECRET
+answer=$servings*($tablespoons_per_serving/10)*(1/16)*$density
 QUESTION
 A recipe calls for exactly $tablespoons_per_serving tablespoons of $substance per 10 servings.
 Assume there are exactly 16 tablespoons of $substance in a cup and that the density of $substance is about $density pounds per cup. 
