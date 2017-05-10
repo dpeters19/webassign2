@@ -35,7 +35,7 @@ substance="cream_cheese"
 density=rand(15,20)/10
 servings=rand(2,8)*1000
 QUESTION
-"A recipe calls for exactly $tablespoons_per_serving tablespoons of $substance per 10 servings. Assume there are exactly 16 tablespoons of $substance in a cup and that the density of $substance is about $density pounds per cup.How many pounds of chili pepper do you need to feed one serving to each of $servings people?\n\n\ Express your answer in 'hyper-scientific' notation to three significant digits. \n\n"
+"A recipe calls for exactly $tablespoons_per_serving tablespoons of $substance per 10 servings. Assume there are exactly 16 tablespoons of $substance in a cup and that the density of $substance is about $density pounds per cup. How many pounds of chili pepper do you need to feed one serving to each of $servings people?"
 ```
 
 Turns into:
