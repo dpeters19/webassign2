@@ -1,10 +1,5 @@
 import random
-
-
-def multiple_replace(text, variable_dict):
-    for key in variable_dict:
-        text = text.replace(key, variable_dict[key])
-    return text
+import science_utils
 
 
 last_line = '\n'
@@ -52,7 +47,7 @@ if QUESTION_IS_PRESENT:
         variables["$" + variable] = str(eval(value)).replace("_", " ")
 
     for line in question_lines:
-        question_lines[question_lines.index(line)] = multiple_replace(line, variables)
+        question_lines[question_lines.index(line)] = science_utils.multiple_replace(line, variables)
 
     for line in question_lines:
         print(line)

@@ -20,7 +20,7 @@ def is_hyper_scientific(number):
     """
     pattern = r"\d\.\d{2}e\d{1,}"
     if re.search(pattern, number) is not None:
-        if number[0] != "0":    # First number should never be zero
+        if number[0] != "0":  # First number should never be zero
             return True
     return False
 
@@ -100,3 +100,22 @@ def is_acceptable_answer(correct_answer, response):
         return True
 
     return False
+
+
+def multiple_replace(text, variable_dict):
+    """
+
+    Args:
+        text (str): The text to replace keys with values
+        variable_dict (dict): The dictionary that holds the keys and values
+
+    Returns:
+        str: Text with the keys replaced with values
+
+    Examples:
+        >>> multiple_replace("A B C a b c", {"a":10, "A": 10})
+        '10 B C 10 b c'
+    """
+    for key in variable_dict:
+        text = text.replace(key, str(variable_dict[key]))
+    return text
