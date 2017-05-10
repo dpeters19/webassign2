@@ -82,7 +82,7 @@ def is_acceptable_answer(correct_answer, response):
 
     # TODO Handle errors better with loop
     try:
-        correct_answer = convert_to_scientific_notation(correct_answer)
+        correct_answer = convert_to_scientific_notation(int(correct_answer))
     except ValueError as ve:
         print(ve.args)
 
