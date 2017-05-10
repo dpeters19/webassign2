@@ -12,4 +12,4 @@ python:
 # command to install dependencies
 install: ""
 # command to run tests
-script: python -m doctest science_utils.py
+script: python -m doctest -v science_utils.py
