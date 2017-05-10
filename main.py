@@ -19,10 +19,6 @@ while not correct and number_of_submissions < MAX_SUBMISSIONS:
                                                   science_utils.convert_to_scientific_notation(float(response))):
                 print("Your answer is right, but your notation is wrong. \nPlease try again.")
 
-            else:
-                # The answer is not numerically correct
-                print("Hmm. Try again.")
-
             continue
         except ValueError as ve:
             print("That was not a number. Please try again")
@@ -38,6 +34,9 @@ while not correct and number_of_submissions < MAX_SUBMISSIONS:
             print("Your answer was correct!")
 
         correct = True
+    else:
+        # The answer is not numerically correct
+        print("Hmm. Try again.")
 
 if number_of_submissions == MAX_SUBMISSIONS:
     print("Make a note that you need help answering this type of question.")
