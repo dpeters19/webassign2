@@ -9,6 +9,7 @@ def get_question():
         No parameters
     Returns:
         list: The list of lines to print
+        str: The answer to the question
         """
     last_line = '\n'
     question = ""
@@ -36,16 +37,25 @@ def get_question():
 
     if question_is_present:
         variable_lines = []
+        secret_lines = []
         question_lines = []
 
         for index in range(len(array_of_lines)):
+            if array_of_lines[index] == "SECRET":
+                secret_index = index
             if array_of_lines[index] == "QUESTION":
                 question_index = index
                 break
 
-        for index in range(question_index):
+        # Adds variables to variable_lines
+        for index in range(secret_index):
             variable_lines.append(array_of_lines[index])
 
+        # Adds answer to secret_lines
+        for index in range(secret_index + 1, question_index):
+            secret_lines.append(array_of_lines[index])
+
+        # Adds question lines to question_lines
         for index in range(question_index + 1, len(array_of_lines)):
             question_lines.append(array_of_lines[index])
 
@@ -53,10 +63,15 @@ def get_question():
             variable, value = line.split("=")
             variables["$" + variable] = str(eval(value)).replace("_", " ")
 
+        for index in range(len(secret_lines)):
+            secret_lines[index] = science_utils.multiple_replace(line, variables)
+            variable, value = secret_lines[index].split("=")
+            variables["answer"] = str(eval(value)).replace("_", " ")
+
         for line in question_lines:
             question_lines[question_lines.index(line)] = science_utils.multiple_replace(line, variables)
 
-        return question_lines
+        return question_lines, variables["answer"]
 
     # This is the backup method, for when there is no QUESTION line found
     else:
