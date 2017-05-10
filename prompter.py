@@ -13,10 +13,14 @@ def prompt_for_answer(question=""):
     is_acceptable = False
     while not is_acceptable:
         response = input(question)
+        is_acceptable = True
+        # TODO determine if invalid answers should count as submissions
+        """
         try:
             science_utils.convert_to_scientific_notation(response)
             is_acceptable = True
         except ValueError as ve:
             print("{}. Please try again. \n".format(ve.args[0]))
+        """
 
     return response
