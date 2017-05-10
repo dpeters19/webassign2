@@ -12,5 +12,4 @@ python:
 # command to install dependencies
 install: ""
 # command to run tests
-script:
-    - science-utils
+script: science-utils
